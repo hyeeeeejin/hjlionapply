@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="{%url 'urlupdate' e.id%}" method="post" enctype="multipart/form-data">  <!-- ''안의 url은 urls.py의 name부분과 같음. -->
+        {%csrf_token%}   <!-- 다시 찾아보기 -->
+        첨부파일 <br>
+        <input type="file" name="uimage" id=""><br>
+        이름 <br>
+        <input type="text" name="uname" id="" value="{{e.name}}" readonly="readonly"><br>      <!-- name은 view.py의 주황 부분 -->
+        학번 <br>
+        <input type="text" name="usnum" id="" value="{{e.snum}}" readonly="readonly"><br>
+        학과 <br>
+        <input type="text" name="udept" id="" value="{{e.dept}}" readonly="readonly"><br>
+        지원동기 <br>
+        <textarea name="umotive" id="" cols="30" rows="10">{{e.motive}}</textarea><br>
+        만들고 싶은 서비스 <br>
+        <textarea name="uservice" id="" cols="30" rows="10">{{e.service}}</textarea><br>
+        장단점 <br>
+        <textarea name="usaw" id="" cols="30" rows="10">{{e.saw}}</textarea><br>
+        포부 <br>
+        <textarea name="uaspire" id="" cols="30" rows="10">{{e.aspire}}</textarea><br>
+        <button type="submit">submit</button>
+
+    </form>
+{% endblock %}

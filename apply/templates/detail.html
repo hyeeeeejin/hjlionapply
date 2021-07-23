@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if messages %}
+    {% for m in messages %}
+    <div style="color: red;">
+        <strong>{{m.message}}</strong>   <!-- 여기서는 뒤에 's' 빼야함. -->
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if o.image %}
+    <p><img src="{{o.image.url}}" alt="" width="100" height="100"></p>
+    {% endif %}
+    <h1>{{o.name}}</h1>
+    <h3>{{o.snum}}</h3>
+    <p>{{o.dept}}</p>
+    <p>{{o.time}}</p>
+    1. 지원동기 <br>
+    <p>{{o.motive}}</p>
+    2. 만들고 싶은 서비스 <br>
+    <p>{{o.service}}</p>
+    3. 장단점 <br>
+    <p>{{o.saw}}</p>
+    4. 포부 <br>
+    <p>{{o.aspire}}</p> 
+
+    <a href="{%url 'urlhome'%}">돌아가기</a>    <!-- 저기 urlhome은 urls.py에서 가져온 이름임.-->
+    <a href="{%url 'urledit' o.id%}">수정하기</a>
+    <a href="{%url 'urldelete' o.id%}">삭제하기</a> 
+
+    <hr>
+
+{% endblock %}

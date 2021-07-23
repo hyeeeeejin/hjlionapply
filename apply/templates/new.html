@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="{%url 'urlcreate'%}" method="post" enctype="multipart/form-data">  <!-- ''안의 url은 urls.py의 name부분과 같음. -->
+        {%csrf_token%}   <!-- 해킹 예방? 다시 찾아보기 -->
+        첨부파일 <br>
+        <input type="file" name="cimage" id=""><br>
+        이름 <br>
+        <input type="text" name="cname" id="" value="{{user.name}}" readonly="readonly"><br>      <!-- name은 view.py의 주황 부분 -->
+        학번 <br>
+        <input type="text" name="csnum" id="" value="{{user.student_id}}" readonly="readonly"><br>
+        학과 <br>
+        <input type="text" name="cdept" id="" value="{{user.major}}" readonly="readonly"><br>
+        지원동기 <br>
+        <textarea name="cmotive" id="" cols="30" rows="10"></textarea><br>
+        만들고 싶은 서비스 <br>
+        <textarea name="cservice" id="" cols="30" rows="10"></textarea><br>
+        장단점 <br>
+        <textarea name="csaw" id="" cols="30" rows="10"></textarea><br>
+        포부 <br>
+        <textarea name="caspire" id="" cols="30" rows="10"></textarea><br>
+        <button type="submit">submit</button>
+
+    </form>
+{% endblock %}
